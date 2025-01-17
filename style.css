@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krub&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
+
+.relative.overflow-hidden{
+    position: relative;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px 0 30px 0; /* Round top-right and bottom-left */
+    overflow: hidden; /* Ensure pseudo-element doesn't overflow */
+}
+
+.relative.overflow-hidden::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px 0 30px 0; /* Match the main card's border-radius */
+    border: 1px solid transparent;
+    border-image: linear-gradient(160deg, rgba(105, 180, 217, 1), rgba(255, 255, 255, 0.3)) 1;
+    z-index: -1; /* Send the pseudo-element behind the card */
+}
+
+/* Custom Styles */
+.nav-link {
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #be6236;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #be6236;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    z-index: 10;
+    border-radius: 8px;
+}
+
+.profile-dropdown a {
+    padding: 10px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Profile picture circle */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
