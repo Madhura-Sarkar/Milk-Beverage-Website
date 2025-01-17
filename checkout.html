@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 items-center justify-center min-h-screen">
+
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-6">Checkout</h1>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Cart Summary</h2>
+
+      <div id="cart-items" class="space-y-4">
+        <!-- Cart items will be loaded here -->
+      </div>
+
+      <div class="mt-6">
+        <div class="flex justify-between mb-2">
+          <span class="font-semibold">Subtotal</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span class="font-semibold">Tax (5%)</span>
+          <span id="tax">$0.00</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span class="font-semibold">Discount</span>
+          <span id="discount">$0.00</span>
+        </div>
+        <div class="flex justify-between text-xl font-semibold">
+          <span>Total</span>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-2">Payment Method</h3>
+        <div>
+          <input type="radio" id="credit" name="payment-method" value="credit">
+          <label for="credit">Credit Card</label>
+        </div>
+        <div>
+          <input type="radio" id="paypal" name="payment-method" value="paypal">
+          <label for="paypal">PayPal</label>
+        </div>
+        <div>
+          <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery">
+          <label for="cash-on-delivery">Cash-on-delivery</label>
+        </div>
+        <div>
+          <input type="radio" id="upi" name="payment-method" value="upi">
+          <label for="upi">UPI</label>
+        </div>
+      </div>
+
+      <!-- Order placed info -->
+      <div id="order-placed-info" class="mt-6 hidden">
+        <h3 class="text-lg font-semibold mb-2">Order Placed</h3>
+        <p>Your order was placed on <span id="order-date" style="color: green;"></span>.</p>
+      </div>
+
+      <button id="proceed-btn" class="mt-6 px-6 py-2 bg-500 text-white rounded-lg w-full" style="background-color: #be6236;">Proceed to Payment</button>
+      
+      <!-- Cancel Button -->
+      <button id="cancel-btn" class="mt-4 px-6 py-2 bg-gray-400 text-white rounded-lg w-full">Cancel</button>
+    </div>
+  </div>
+
+<script>
+// Function to load cart and calculate totals
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItemsContainer = document.getElementById('cart-items');
+  let subtotal = 0;
+
+  cartItemsContainer.innerHTML = ''; // Clear existing items
+
+  // Loop through cart items and calculate subtotal
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    subtotal += itemTotal;
+
+    // Display each cart item with a remove button
+    cartItemsContainer.innerHTML += `
+      <div class="flex justify-between items-center text-lg">
+        <span>${item.name} (x${item.quantity})</span>
+        <span>$${itemTotal.toFixed(2)}</span>
+        <button class="text-red-500 ml-2" onclick="removeItem(${index})">
+          <i class="fa fa-times"></i> <!-- Cross icon -->
+        </button>
+      </div>
+    `;
+  });
+
+  // Apply tax (5%) and discount logic
+  const tax = subtotal * 0.05;  // Tax is 5% of subtotal
+  const discount = (subtotal >= 20) ? 5 : 0;  // Apply $5 discount if subtotal >= $20
+
+  const total = subtotal + tax - discount;
+
+  // Update the displayed values
+  document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+  document.getElementById('discount').textContent = `$${discount.toFixed(2)}`;
+  document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+}
+
+// Remove item from cart
+function removeItem(index) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Remove item at the specified index
+  cart.splice(index, 1);
+  
+  // Update the cart in localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Reload the cart and recalculate totals
+  loadCart();
+}
+
+// Call loadCart on page load to update cart items and total price
+loadCart();
+
+// Handle proceed to payment
+document.getElementById('proceed-btn').addEventListener('click', function() {
+  const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+  if (selectedPaymentMethod) {
+    // Display order placed message with the current date
+    const orderDate = new Date().toLocaleString(); // Get current date and time
+    document.getElementById('order-date').textContent = orderDate;
+    document.getElementById('order-placed-info').classList.remove('hidden'); // Show the order placed info
+    
+    // Increment the order count in localStorage
+    let orderCount = parseInt(localStorage.getItem('orderCount')) || 0;
+    localStorage.setItem('orderCount', orderCount + 1);
+    
+    // Clear cart after proceeding to payment
+    localStorage.removeItem('cart');
+  } else {
+    alert('Please select a payment method');
+  }
+});
+
+// Handle cancel button (redirect to the shop page)
+document.getElementById('cancel-btn').addEventListener('click', function() {
+  window.location.href = "flavor.html"; // Redirect back to the shop page
+});
+</script>
+
+</body>
+</html>

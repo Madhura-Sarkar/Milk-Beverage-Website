@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<style>
+  .submit-btn {
+    font-size: 20px;
+    font-family: 'Leckerli One';
+    font-weight: 500;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+    background-color: #883225;
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+  }
+
+  .submit-btn:hover {
+    background-color: #5d7659 !important;
+    /* Override inline style if necessary */
+    color: white !important;
+  }
+</style>
+
+<body class="overflow-x-hidden" style="background-color: #FFF0D1; font-family: 'Krub';">
+
+  <!-- Navbar Section -->
+  <nav class="py-4 px-4 sm:px-6 md:px-8 lg:px-12">
+    <div class="container mx-auto flex justify-between items-center">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/423/423992.png" alt="logo"
+          class="w-8 h-8 inline-block transform -rotate-45">
+      </div>
+
+      <ul class="hidden md:flex space-x-12 text-brown-900 font-semibold" style="font-family: 'Lemon';">
+        <li><a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a></li>
+        <li><a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavor</a></li>
+        <li><a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a></li>
+        <li class="active" aria-current="page"><a href="#" class="nav-link"
+            style="color: #be6236; font-weight: bold;">Contact</a></li>
+      </ul>
+
+      <div class="text-brown-900 text-2xl relative">
+        <a href="cart.html">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="cart-count"
+            class="absolute top-0 right-0 rounded-full bg-red-600 text-white text-xs px-2 py-1 hidden">0</span>
+        </a>
+        <a href="#">
+          <i class="fa-solid fa-user" style="color: #000000; margin-left: 20px;"></i>
+        </a>
+      </div>
+
+      <button class="block md:hidden text-brown-900" id="menu-toggle">
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <ul id="mobile-menu" class="md:hidden hidden mt-4 space-y-2 text-center text-brown-900 font-semibold"
+      style="font-family: 'Lemon';">
+      <li>
+        <a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a>
+      </li>
+      <li>
+        <a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavors</a>
+      </li>
+      <li>
+        <a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a>
+      </li>
+      <li class="active" aria-current="page">
+        <a href="#" class="nav-link text-[#be6236] transition">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="py-16 px-8" style="color: #883225;">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- Get in Touch Title -->
+      <h1 class="text-5xl font-bold mb-10 text-[#883225]" style="font-family: 'Lemon';">Get in touch</h1>
+
+      <!-- Contact Form and Info Section -->
+      <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- Contact Form -->
+        <div class="bg-white shadow-md rounded-lg p-8 w-full lg:w-2/3">
+          <h2 class="text-xl font-semibold mb-6">Send a Message</h2>
+          <p class="text-[#883225]-500 mb-6">Feel free to send us a message anytime! Whether you have questions,
+            feedback, or need assistance, we're here to help and ensure you have the best experience with our products.
+          </p>
+
+          <!-- Form Fields -->
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" placeholder="Name"
+                class="border-b border-gray-300 focus:border-black outline-none py-2">
+              <input type="email" placeholder="Email Address"
+                class="border-b border-gray-300 focus:border-black outline-none py-2">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" placeholder="Interested In"
+                class="border-b border-gray-300 focus:border-black outline-none py-2">
+              <input type="tel" placeholder="Phone Number"
+                class="border-b border-gray-300 focus:border-black outline-none py-2">
+            </div>
+            <textarea placeholder="Message"
+              class="border-b border-gray-300 focus:border-black outline-none w-full py-2"></textarea>
+            <div class="text-left mt-5">
+              <button
+                class="submit-btn text-white rounded-full px-6 py-2 text-lg font-medium shadow-lg transition-all duration-300 hover:bg-[#5d7659] hover:text-white">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="w-full lg:w-1/3">
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold">Call Us</h3>
+              <p class="text-gray-500">Get in touch with us today to experience the finest dairy products, crafted with
+                care for exceptional taste, quality, and freshness. We’re here to bring you the best in every bottle!
+              </p>
+              <p class="text-orange-500 mt-2" style="color: #883225;"><i class="fa-solid fa-phone"
+                  style="color: #883225;"></i> (239) 123-4568</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Visit Us</h3>
+              <p class="text-gray-500">Visit us today and discover the perfect blend of tradition and innovation in
+                every dairy product. We’re excited to share our fresh, quality offerings with you!</p>
+              <p class="text-orange-500 mt-2" style="color: #883225;"><i class="fa-solid fa-location-dot"
+                  style="color: #883225;"></i> Kolkata, West Bengal, India</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Live Chat</h3>
+              <p class="text-gray-500">Hello! How can we assist you today? Feel free to ask any questions about our
+                products, and we'll be happy to help!</p>
+              <a href="#" class="text-orange-500 mt-2" style="color: #883225;"><i class="fa-solid fa-comments"
+                  style="color: #883225;"></i> Start Chat</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="mt-12">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117925.33439927742!2d88.34735275!3d22.53542735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1731161772640!5m2!1sen!2sin"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- FAQs  -->
+      <section class="bg-white rounded-lg shadow-lg p-10 max-w-8xl mx-auto mt-12" id="faq">
+        <div class="flex flex-col lg:flex-row justify-between space-y-8 lg:space-y-0 lg:space-x-12">
+          <!-- Left Section -->
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl font-bold text-[#883225]-900" style="font-family: 'Lemon';">Any questions?<br>We got
+              you.</h2>
+            <p class="text-gray-700 mt-4" style="color: #5d7659;">Got questions or need help? Don't worry, we're here to
+              provide all the answers and support you need to make the best choice with our products!</p>
+            <a href="#" class="mt-6 inline-block text-blue-600 font-semibold">More FAQs →</a>
+          </div>
+
+          <!-- Right Section (Accordion) -->
+          <div class="lg:w-1/2">
+            <div class="space-y-4">
+              <!-- FAQ Item 1 -->
+              <div>
+                <button
+                  class="faq-question flex justify-between w-full text-left py-4 border-b text-gray-800 font-semibold"
+                  onclick="toggleFaq(this)">
+                  <span style="color: #883225;">What types of milk beverages do you offer?</span>
+                  <span class="toggle-icon">-</span>
+                </button>
+                <div class="faq-answer text-gray-600 mt-2 hidden">
+                  We offer a wide range of milk-based beverages, including classic options like whole milk, chocolate
+                  milk, and flavored milks, as well as innovative options such as almond milk lattes, matcha-infused
+                  drinks, and protein-packed milk shakes.
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div>
+                <button
+                  class="faq-question flex justify-between w-full text-left py-4 border-b text-gray-800 font-semibold"
+                  onclick="toggleFaq(this)">
+                  <span style="color: #883225;">Are your milk beverages made with natural ingredients?</span>
+                  <span class="toggle-icon">+</span>
+                </button>
+                <div class="faq-answer text-gray-600 mt-2 hidden">
+                  Yes, all our milk beverages are made with high-quality, natural ingredients. We use fresh milk and
+                  carefully selected flavorings, with no artificial additives or preservatives.
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div>
+                <button
+                  class="faq-question flex justify-between w-full text-left py-4 border-b text-gray-800 font-semibold"
+                  onclick="toggleFaq(this)">
+                  <span style="color: #883225;">Do your products contain any allergens?</span>
+                  <span class="toggle-icon">+</span>
+                </button>
+                <div class="faq-answer text-gray-600 mt-2 hidden">
+                  Our milk beverages contain dairy, and some may contain additional allergens such as nuts or soy.
+                  Please check the product labels for detailed allergen information. We also offer dairy-free options
+                  like almond and oat milk beverages for those with specific dietary preferences.
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div>
+                <button
+                  class="faq-question flex justify-between w-full text-left py-4 border-b text-gray-800 font-semibold"
+                  onclick="toggleFaq(this)">
+                  <span style="color: #883225;">Are your milk beverages suitable for people with lactose
+                    intolerance?</span>
+                  <span class="toggle-icon">+</span>
+                </button>
+                <div class="faq-answer text-gray-600 mt-2 hidden">
+                  We offer lactose-free milk beverages, carefully processed to remove lactose while retaining the same
+                  creamy taste and nutritional value. Check product labels for specific lactose-free options.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        function toggleFaq(button) {
+          const answer = button.nextElementSibling;
+          const icon = button.querySelector('.toggle-icon');
+
+          // Toggle visibility of the answer
+          answer.classList.toggle('hidden');
+
+          // Toggle icon
+          icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
+        }
+      </script>
+    </div>
+  </section>
+
+
+  <!-- footer starts  -->
+  <!-- Footer Section -->
+  <footer class="py-12 px-6 text-white" style="background-color: #883225; font-family: 'Krub';">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+
+        <!-- Logo and Contact Section -->
+        <div class="lg:w-1/4 mb-10 lg:mb-0">
+          <img src="https://cdn-icons-png.flaticon.com/512/1448/1448460.png" alt="WholeMoon Logo" class="mb-4 h-12"
+            style="color: white;">
+          <h2 class="text-3xl font-bold">Get in touch.</h2>
+          <p class="mt-4 text-[#BCC6D4]">
+            We’re here if you ever have any questions, comments, or just want to chat. Drop us a line through the form
+            below or shoot us an email. Our inbox is always open.
+          </p>
+
+          <!-- Email Input -->
+          <div class="mt-6 relative">
+            <input type="email" placeholder="Email address"
+              class="bg-transparent border border-[#BCC6D4] text-white rounded-full px-4 py-2 w-full" />
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+              →
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Links Section -->
+        <div class="lg:w-3/4 flex flex-col sm:flex-row justify-around space-y-8 sm:space-y-0">
+
+          <!-- Content Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Content</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="flavor.html" class="hover:underline">Our Products</a></li>
+              <li><a href="about.html" class="hover:underline">About Us</a></li>
+              <li><a href="contact.html#faq" class="hover:underline">FAQs</a></li>
+            </ul>
+          </div>
+
+          <!-- Social Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Social</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+              <li><a href="#" class="hover:underline">LinkedIn</a></li>
+              <li><a href="#" class="hover:underline">Facebook</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="mailto:hello@wholemoon.com" class="hover:underline">example@email.com</a></li>
+              <li>Kolkata, IND</li>
+            </ul>
+            <!-- footer ends  -->
+
+            <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+            <script>
+              // Toggle the mobile menu
+              document.getElementById('menu-toggle').addEventListener('click', function () {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+              });
+            </script>
+
+            <!-- script for cart page  -->
+            <script>
+              // Function to add item to the cart and update cart count
+              function addToCart(name, price, imgUrl) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const itemIndex = cart.findIndex(item => item.name === name); // Check if the item already exists in the cart
+
+                if (itemIndex !== -1) {
+                  cart[itemIndex].quantity += 1; // If item exists, increase the quantity
+                } else {
+                  cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1,
+                    imageUrl: imgUrl // Store the image URL for the cart
+                  });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Update cart icon count
+                updateCartCount();
+
+                // Show confirmation message
+                const message = document.getElementById('message');
+                message.classList.remove('hidden');
+                setTimeout(() => message.classList.add('hidden'), 3000); // Hide after 3 seconds
+              }
+
+              // Update cart count on the icon
+              function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCount = document.getElementById('cart-count');
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+                // Update the display of the cart count
+                if (totalItems > 0) {
+                  cartCount.textContent = totalItems;
+                  cartCount.classList.remove('hidden');
+                } else {
+                  cartCount.classList.add('hidden');
+                }
+              }
+
+              // Initial call to update cart count when the page loads
+              updateCartCount();
+
+              // Function to redirect to cart
+              function redirectToCart() {
+                window.location.href = "cart.html";
+              }
+
+            </script>
+
+</body>
+
+</html>

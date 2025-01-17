@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="overflow-x-hidden" style="background-color: #FFF0D1; font-family: 'Krub';">
+
+  <!-- Navbar Section -->
+<nav class="py-4 px-4 sm:px-6 md:px-8 lg:px-12">
+  <div class="container mx-auto flex justify-between items-center">
+    <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/423/423992.png" alt="logo" class="w-8 h-8 inline-block transform -rotate-45">
+    </div>
+
+    <ul class="hidden md:flex space-x-12 text-brown-900 font-semibold" style="font-family: 'Lemon';">
+        <li><a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a></li>
+        <li><a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavor</a></li>
+        <li class="active" aria-current="page"><a href="#" class="nav-link" style="color: #be6236; font-weight: bold;">About</a></li>
+        <li><a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a></li>
+    </ul>
+
+    <div class="text-brown-900 text-2xl relative">
+      <a href="cart.html">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="cart-count" class="absolute top-0 right-0 rounded-full bg-red-600 text-white text-xs px-2 py-1 hidden">0</span>
+      </a>    
+      <a href="#">
+          <i class="fa-solid fa-user" style="color: #000000; margin-left: 20px;"></i>
+      </a>    
+  </div>
+
+  <button class="block md:hidden text-brown-900" id="menu-toggle">
+      <i class="fas fa-bars fa-lg"></i>
+  </button>
+</div>
+
+<!-- Mobile Menu -->
+<ul id="mobile-menu" class="md:hidden hidden mt-4 space-y-2 text-center text-brown-900 font-semibold" style="font-family: 'Lemon';">
+  <li>
+      <a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a>
+  </li>
+  <li>
+      <a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavors</a>
+  </li>
+  <li class="active" aria-current="page">
+      <a href="#" class="nav-link text-[#be6236] transition">About</a>
+  </li>
+  <li>
+      <a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a>
+  </li>
+</ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="mt-8 bg-[#883225] text-white pt-12 pb-24 relative px-4 sm:px-6 md:px-8 lg:px-12" style="font-family: 'Krub';">
+    <div class="container mx-auto flex flex-col lg:flex-row items-center lg:space-x-8">
+      <!-- Text Content -->
+      <div class="lg:w-1/2">
+        <p class="uppercase text-white-200 font-medium text-sm">Fresh Milk</p>
+        <h2 class="text-5xl font-bold leading-tight mt-2" style="font-family: 'Lemon';">That's What I <span>Like</span></h2>
+        <p class="mt-4 font-medium text-white-200 leading-relaxed">Our range of milk-based drinks features a blend of creamy traditional favorites and exciting new flavors, delivering both wholesome nutrition and refreshing taste for a great start to your day or a delightful indulgence.</p>
+        <div class="flex space-x-4 mt-8">
+            <div class="text-center">
+                <button class="bg-white text-[#5d7659] rounded-full px-6 py-2 text-lg font-medium shadow-lg transition hover:bg-[#5d7659] hover:text-white" style="font-size: 20px; font-family: 'Leckerli One'; font-weight: 500; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);">
+                    <a href="flavor.html">Get Started</a>
+                </button>
+            </div>
+        </div>
+    </div>
+      
+      <!-- Image Content -->
+      <div class="lg:w-1/2 mt-8 lg:mt-0 relative">
+        <img src="https://im1.dineout.co.in/images/uploads/restaurant/sharpen/4/g/e/p4177-16812196766435605c9919b.jpg?tr=tr:n-xlarge" alt="Milk Cartons" class="rounded-lg shadow-lg">
+      </div>
+    </div>
+    <!-- Decorative Curve -->
+    <div class="absolute bottom-0 left-0 w-full h-12 bg-[#C7DCE2] transform translate-y-1/2 rounded-t-full"></div>
+</section>
+
+<!-- About Section -->
+<section class="bg-[#C7DCE2] py-16 px-4 sm:px-6 md:px-8 lg:px-12" style="font-family: 'Krub';">
+    <div class="container mx-auto text-center lg:text-left">
+      <div class="lg:flex lg:items-center lg:space-x-12">
+        <!-- About Text -->
+        <div class="lg:w-1/2">
+          <h3 class="text-3xl font-bold text-gray-800" style="font-family: 'Lemon';">We Sell The Best Dairy Product</h3>
+          <p class="text-gray-600 mt-4">We collab with the best dairy products by combining quality ingredients, innovative techniques, and a passion for excellence.</p>
+          <ul class="mt-6 text-left space-y-2 text-gray-700">
+            <li>✓ Premium Quality: Our dairy products are made from the finest, locally sourced ingredients, ensuring unmatched taste and freshness in every bite.</li>
+            <li>✓ Secure & Fresh Packaging: We sell our dairy products only in sealed bottles, ensuring maximum freshness, safety, and convenience with every purchase.</li>
+            <li>✓ Purely Natural: Free from artificial additives, our products bring you the pure goodness of nature in every serving, perfect for health-conscious consumers.</li>
+          </ul>
+            <div class="text-left mt-10">
+                <button class="bg-white text-[#883225] rounded-full px-6 py-2 text-lg font-medium shadow-lg transition hover:bg-[#883225] hover:text-white" style="font-size: 20px; font-family: 'Leckerli One'; font-weight: 500; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);">
+                    <a href="contact.html">Subscribe</a>
+                </button>
+            </div>
+        </div>
+
+        <!-- About Statistics -->
+        <div class="lg:w-1/2 grid grid-cols-2 gap-4 mt-8 lg:mt-0">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h4 class="text-4xl font-bold text-[#883225]">67+</h4>
+            <p class="text-gray-600 mt-2">Years Experience</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h4 class="text-4xl font-bold text-[#883225]">200+</h4>
+            <p class="text-gray-600 mt-2">Daily Products</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<!-- footer starts  -->
+<!-- Footer Section -->
+<footer class="py-12 px-6 text-white" style="background-color: #883225; font-family: 'Krub';">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+        
+        <!-- Logo and Contact Section -->
+        <div class="lg:w-1/4 mb-10 lg:mb-0">
+          <img src="https://cdn-icons-png.flaticon.com/512/1448/1448460.png" alt="WholeMoon Logo" class="mb-4 h-12" style="color: white;">
+          <h2 class="text-3xl font-bold">Get in touch.</h2>
+          <p class="mt-4 text-[#BCC6D4]">
+            We’re here if you ever have any questions, comments, or just want to chat. Drop us a line through the form below or shoot us an email. Our inbox is always open.
+          </p>
+  
+          <!-- Email Input -->
+          <div class="mt-6 relative">
+            <input
+              type="email"
+              placeholder="Email address"
+              class="bg-transparent border border-[#BCC6D4] text-white rounded-full px-4 py-2 w-full"
+            />
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+              →
+            </button>
+          </div>
+        </div>
+  
+        <!-- Navigation Links Section -->
+        <div class="lg:w-3/4 flex flex-col sm:flex-row justify-around space-y-8 sm:space-y-0">
+          
+          <!-- Content Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Content</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="flavor.html" class="hover:underline">Our Products</a></li>
+              <li><a href="about.html" class="hover:underline">About Us</a></li>
+              <li><a href="contact.html#faq" class="hover:underline">FAQs</a></li>
+            </ul>
+          </div>
+  
+          <!-- Social Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Social</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+              <li><a href="#" class="hover:underline">LinkedIn</a></li>
+              <li><a href="#" class="hover:underline">Facebook</a></li>
+            </ul>
+          </div>
+  
+          <!-- Contact Info -->
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="mailto:hello@wholemoon.com" class="hover:underline">example@email.com</a></li>
+              <li>Kolkata, IND</li>
+            </ul>
+<!-- footer ends  -->
+
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <script>
+      // Toggle the mobile menu
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+          var menu = document.getElementById('mobile-menu');
+          menu.classList.toggle('hidden');
+      });
+  </script>
+
+  <!-- script for cart page  -->
+<script> 
+  // Function to add item to the cart and update cart count
+  function addToCart(name, price, imgUrl) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const itemIndex = cart.findIndex(item => item.name === name); // Check if the item already exists in the cart
+  
+    if (itemIndex !== -1) {
+      cart[itemIndex].quantity += 1; // If item exists, increase the quantity
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        quantity: 1,
+        imageUrl: imgUrl // Store the image URL for the cart
+      });
+    }
+  
+    localStorage.setItem('cart', JSON.stringify(cart));
+  
+    // Update cart icon count
+    updateCartCount();
+  
+    // Show confirmation message
+    const message = document.getElementById('message');
+    message.classList.remove('hidden');
+    setTimeout(() => message.classList.add('hidden'), 3000); // Hide after 3 seconds
+  }
+  
+  // Update cart count on the icon
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = document.getElementById('cart-count');
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    // Update the display of the cart count
+    if (totalItems > 0) {
+      cartCount.textContent = totalItems;
+      cartCount.classList.remove('hidden');
+    } else {
+      cartCount.classList.add('hidden');
+    }
+  }
+  
+  // Initial call to update cart count when the page loads
+  updateCartCount();
+  
+  // Function to redirect to cart
+  function redirectToCart() {
+    window.location.href = "cart.html";
+  }
+  
+  </script>
+  
+
+</body>
+</html>
