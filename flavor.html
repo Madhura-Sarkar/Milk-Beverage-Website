@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<style>
+    .floating-images {
+        position: relative;
+    }
+
+    .floating-images img {
+        width: 100px;
+        height: auto;
+        position: absolute;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+    }
+
+    .product-name-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+
+    .product-name {
+        font-size: 10rem; /* Default size for large screens */
+        font-weight: bold;
+        font-family: 'Lemon';
+        transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+        transform-origin: center center;
+    }
+
+    /* Button styles */
+    .button {
+        background-color: white;
+        color: #883225;
+        border-radius: 9999px;
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #883225;
+        color: white;
+    }
+
+    /* Adjusting image and content container for responsiveness */
+    .rotate-view {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    #product {
+        width: 100%;
+        max-width: 600px; /* Max size of the product image */
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    #prev,
+    #next {
+        position: absolute;
+        top: 70%;
+        transform: translateY(-50%);
+        color: white;
+        font-size:6rem;
+        font-family: monospace;
+        cursor: pointer;
+        z-index: 15;
+    }
+
+    #prev {
+        left: 20px;
+    }
+
+    #next {
+        right: 20px;
+    }
+
+    .shadow-lg {
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Floating images */
+    .floating-images img {
+        width: 80px;
+        height: auto;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .product-name {
+            font-size: 6rem;
+        }
+
+        #prev,
+        #next {
+            font-size: 4rem;
+        }
+
+        .button {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        .floating-images {
+            display: none; /* Hide floating images on small screens */
+        }
+
+        .floating-images img {
+            width: 60px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .product-name {
+            font-size: 4rem;
+        }
+
+        .floating-images img {
+            width: 50px;
+        }
+
+        .button {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+<body class="overflow-x-hidden" style="background-color: #FFF0D1; font-family: 'Krub';">
+
+<!-- Navbar Section -->
+<nav class="py-4 px-4 sm:px-6 md:px-8 lg:px-12">
+    <div class="container mx-auto flex justify-between items-center">
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/423/423992.png" alt="logo" class="w-8 h-8 inline-block transform -rotate-45">
+        </div>
+
+        <ul class="hidden md:flex space-x-12 text-brown-900 font-semibold" style="font-family: 'Lemon';">
+            <li><a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a></li>
+            <li class="active" aria-current="page"><a href="#" class="nav-link" style="color: #be6236; font-weight: bold;">Flavor</a></li>
+            <li><a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a></li>
+            <li><a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a></li>
+        </ul>
+
+        <div class="text-brown-900 text-2xl relative">
+          <a href="cart.html">
+              <i class="fas fa-shopping-bag"></i>
+              <span id="cart-count" class="absolute top-0 right-0 rounded-full bg-red-600 text-white text-xs px-2 py-1 hidden">0</span>
+          </a>    
+          <a href="#">
+              <i class="fa-solid fa-user" style="color: #000000; margin-left: 20px;"></i>
+          </a>    
+      </div>
+
+      <button class="block md:hidden text-brown-900" id="menu-toggle">
+          <i class="fas fa-bars fa-lg"></i>
+      </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul id="mobile-menu" class="md:hidden hidden mt-4 space-y-2 text-center text-brown-900 font-semibold" style="font-family: 'Lemon';">
+    <li>
+        <a href="index.html" class="nav-link hover:text-[#be6236] transition">Home</a>
+    </li>
+      <li class="active" aria-current="page">
+          <a href="#" class="nav-link text-[#be6236] transition">Flavors</a>
+      </li>
+      <li>
+          <a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a>
+      </li>
+      <li>
+          <a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a>
+      </li>
+  </ul>
+</nav>
+
+<!-- search section  -->
+<!-- Search Bar -->
+<div class="relative w-full max-w-lg px-4 md:px-8 mx-auto mt-2">
+    <div class="flex items-center border rounded-full overflow-hidden bg-white shadow-md" style="border: 2px solid #883225;">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search your items here..."
+        class="px-4 py-2 w-full md:w-[400px] outline-none bg-transparent text-red-700 placeholder-red-500"
+      />
+      <button id="searchButton" class="p-2 bg-transparent text-red-700">
+        <i class="fa-solid fa-magnifying-glass" style="padding: 0px 10px;"></i>
+      </button>
+    </div>
+</div>
+
+<!-- No Product Found Message -->
+<p id="noProductMessage" class="bg-white text-black text-center mt-4 hidden">No products_search found.</p>
+
+  <script>
+    // Array of available products_search with corresponding IDs
+    const products_search = [
+        { name: "Almond", id: "almond", price: 3.99, img: "https://i.shgcdn.com/654c33e6-7c24-4c1f-9bf8-b149ae6e6f11/-/format/auto/-/preview/3000x3000/-/quality/lighter/" },
+        { name: "Oatmeal", id: "oatmeal", price: 4.49, img: "https://i.shgcdn.com/d648fe87-50c6-474e-9dc6-83ad87237d1b/-/format/auto/-/preview/3000x3000/-/quality/lighter/'" },
+        { name: "Pistachio", id: "pistachio", price: 5.29, img: "https://i.shgcdn.com/4506ee55-cd1d-4cff-a387-346e9fb3ad4e/-/format/auto/-/preview/3000x3000/-/quality/lighter/" },
+        { name: "Reduced-Fat-Milk", id: "reduced-fat-milk", price: 3.59, img: "https://th.bing.com/th/id/R.0aa1277a57874432787568a0cfd0c392?rik=XkEes5AfJP7l2A&riu=http%3a%2f%2falexandrefamilyfarm.com%2fcdn%2fshop%2fproducts%2f2_ReducedFatMilk_48ozrender_1_1200x1200.png%3fv%3d1677526403&ehk=F%2bln6S5E1doVBF%2fNVCp%2f91PtwL1p8XHMbXGCfIsEGRc%3d&risl=&pid=ImgRaw&r=0" },
+        { name: "Grass-Fed", id: "grass-fed-milk", price: 3.49, img: "https://alexandrefamilyfarm.com/cdn/shop/products/48oz_GrassFed_2000x1600_1f04bdad-cf9d-4458-bacb-fc52da3dfbbe_2000x.png?v=1653515540" },
+        { name: "Whole-Milk", id: "whole-milk", price: 3.39, img: "https://th.bing.com/th/id/R.b92feec98afb18f141c8ec53257a91b8?rik=j9D9JvMtwoIzXA&riu=http%3a%2f%2falexandrefamilyfarm.com%2fcdn%2fshop%2fproducts%2f48oz_Whole_2000x1600_0f8e8ba7-e2a9-475c-8e51-d0c74c5c1cf0_1200x1200.png%3fv%3d1653515587&ehk=M%2bMKTOMICAedfoCWQEcHmdqtNyf2016RLjJAkPLBIao%3d&risl=&pid=ImgRaw&r=0" }
+    ];
+
+    // Function to handle the search
+    function handleSearch() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const noProductMessage = document.getElementById("noProductMessage");
+        let foundProduct = false;
+
+        // Loop through the products_search to find the matching one
+        products_search.forEach(product => {
+            const productElement = document.getElementById(product.id);
+            if (product.name.toLowerCase().includes(searchInput)) {
+                foundProduct = true;
+                // Scroll to the product
+                productElement.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                // Highlight the product
+                productElement.style.border = "3px solid #883225";  // Highlight by changing the border
+                productElement.style.padding = "10px";  // Add padding
+                setTimeout(() => {
+                    // Remove the highlight after 2 seconds
+                    productElement.style.border = "";
+                }, 2000);
+            }
+        });
+
+        // If no product is found, show the "No products_search found" message
+        if (!foundProduct) {
+            noProductMessage.classList.remove("hidden");
+        } else {
+            noProductMessage.classList.add("hidden");
+        }
+    }
+
+    // Add event listener to the search button
+    document.getElementById("searchButton").addEventListener("click", handleSearch);
+
+    // Optional: Allow "Enter" key to trigger search as well
+    document.getElementById("searchInput").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    });
+  </script>
+
+
+<!-- search section ends  -->
+
+<!-- display container  -->
+    <div class="m-screen flex items-center justify-center min-h-screen">
+        <div class="relative text-center">
+            <div class="product-name-container">
+                <h1 class="product-name">Almond</h1>
+            </div>
+
+            <!-- Floating images -->
+            <div class="floating-images">
+                <img src="https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png" style="width: 150px; height: 150px; left: -80px; top: 50px; transform: rotate(-85deg);" alt="Almond">
+                <img src="https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png" style="width: 150px; height: 150px; right: -70px; top: -10px; transform: rotate(-25deg);" alt="Almond">
+                <img src="https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png" style="width: 250px; height: 250px; left: -400px; bottom: -700px; transform: rotate(15deg); filter: blur(2px);" alt="Almond">
+                <img src="https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png" style="width: 250px; height: 250px; right: -400px; bottom: -700px; transform: rotate(45deg); filter: blur(1px);" alt="Almond">
+            </div>
+
+            <div class="rotate-view" id="rotate-view">
+                <img src="https://i.shgcdn.com/654c33e6-7c24-4c1f-9bf8-b149ae6e6f11/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="Shakes" id="product" style="height: 800px;">
+            </div>
+
+            <div class="navigation">
+                <button id="prev" class="nav-button">&lt;</button>
+                <button id="next" class="nav-button">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-2 mb-8">
+        <div class="text-center">
+            <button class="button" style="font-family: 'Leckerli One';">Choose your flavor</button>
+        </div>
+    </div>
+
+<!-- js for hero product view  -->
+<script>
+        const product = document.getElementById('product');
+        const rotateView = document.getElementById('rotate-view');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const productName = document.querySelector('h1');
+
+        let productIndex = 0;
+
+        // Update the products and their floating images
+        const products = [
+            'https://i.shgcdn.com/654c33e6-7c24-4c1f-9bf8-b149ae6e6f11/-/format/auto/-/preview/3000x3000/-/quality/lighter/',
+            'https://i.shgcdn.com/d648fe87-50c6-474e-9dc6-83ad87237d1b/-/format/auto/-/preview/3000x3000/-/quality/lighter/',
+            'https://i.shgcdn.com/4506ee55-cd1d-4cff-a387-346e9fb3ad4e/-/format/auto/-/preview/3000x3000/-/quality/lighter/',
+            'https://th.bing.com/th/id/R.0aa1277a57874432787568a0cfd0c392?rik=XkEes5AfJP7l2A&riu=http%3a%2f%2falexandrefamilyfarm.com%2fcdn%2fshop%2fproducts%2f2_ReducedFatMilk_48ozrender_1_1200x1200.png%3fv%3d1677526403&ehk=F%2bln6S5E1doVBF%2fNVCp%2f91PtwL1p8XHMbXGCfIsEGRc%3d&risl=&pid=ImgRaw&r=0',
+            'https://alexandrefamilyfarm.com/cdn/shop/products/48oz_GrassFed_2000x1600_1f04bdad-cf9d-4458-bacb-fc52da3dfbbe_2000x.png?v=1653515540',
+            'https://th.bing.com/th/id/R.b92feec98afb18f141c8ec53257a91b8?rik=j9D9JvMtwoIzXA&riu=http%3a%2f%2falexandrefamilyfarm.com%2fcdn%2fshop%2fproducts%2f48oz_Whole_2000x1600_0f8e8ba7-e2a9-475c-8e51-d0c74c5c1cf0_1200x1200.png%3fv%3d1653515587&ehk=M%2bMKTOMICAedfoCWQEcHmdqtNyf2016RLjJAkPLBIao%3d&risl=&pid=ImgRaw&r=0'
+        ];
+
+        const productNames = ['Almond', 'Oatmeal', 'Pistachio', 'ReducedFat', 'GrassFed', 'WholeMilk'];
+
+        // Define floating images for each product
+        const floatingImagesSrc = [
+            [
+                'https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/012/596/340/original/single-of-almond-nut-free-png.png'
+            ],
+            [
+                'https://leclerc.ca/system/uploads/2018/03/22/1hrvdzg66j_avoine_3.png',
+                'https://leclerc.ca/system/uploads/2018/03/22/1hrvdzg66j_avoine_3.png',
+                'https://leclerc.ca/system/uploads/2018/03/22/1hrvdzg66j_avoine_3.png',
+                'https://leclerc.ca/system/uploads/2018/03/22/1hrvdzg66j_avoine_3.png'
+            ],
+            [
+                'https://th.bing.com/th/id/R.c9a8cfa8526171957401cd5ba2d344cc?rik=6ur34S9gjGYfOg&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f06%2fPistachio-PNG.png&ehk=87kCOTTIzmwjd19Ce8yPPM6b9VYA79TQ6tV%2fydlLQWA%3d&risl=&pid=ImgRaw&r=0',
+                'https://th.bing.com/th/id/R.c9a8cfa8526171957401cd5ba2d344cc?rik=6ur34S9gjGYfOg&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f06%2fPistachio-PNG.png&ehk=87kCOTTIzmwjd19Ce8yPPM6b9VYA79TQ6tV%2fydlLQWA%3d&risl=&pid=ImgRaw&r=0',
+                'https://th.bing.com/th/id/R.c9a8cfa8526171957401cd5ba2d344cc?rik=6ur34S9gjGYfOg&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f06%2fPistachio-PNG.png&ehk=87kCOTTIzmwjd19Ce8yPPM6b9VYA79TQ6tV%2fydlLQWA%3d&risl=&pid=ImgRaw&r=0',
+                'https://th.bing.com/th/id/R.c9a8cfa8526171957401cd5ba2d344cc?rik=6ur34S9gjGYfOg&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f06%2fPistachio-PNG.png&ehk=87kCOTTIzmwjd19Ce8yPPM6b9VYA79TQ6tV%2fydlLQWA%3d&risl=&pid=ImgRaw&r=0'
+            ],
+            [
+                'https://static.vecteezy.com/system/resources/previews/013/211/278/original/cartoon-of-cow-illustration-cow-in-format-image-illustration-of-cow-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/013/211/278/original/cartoon-of-cow-illustration-cow-in-format-image-illustration-of-cow-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/013/211/278/original/cartoon-of-cow-illustration-cow-in-format-image-illustration-of-cow-free-png.png',
+                'https://static.vecteezy.com/system/resources/previews/013/211/278/original/cartoon-of-cow-illustration-cow-in-format-image-illustration-of-cow-free-png.png'
+            ],
+            [
+                'https://png.pngtree.com/png-clipart/20210523/original/pngtree-bamboo-leaves-green-natural-plants-png-image_6325748.png',
+                'https://png.pngtree.com/png-clipart/20210523/original/pngtree-bamboo-leaves-green-natural-plants-png-image_6325748.png',
+                'https://png.pngtree.com/png-clipart/20210523/original/pngtree-bamboo-leaves-green-natural-plants-png-image_6325748.png',
+                'https://png.pngtree.com/png-clipart/20210523/original/pngtree-bamboo-leaves-green-natural-plants-png-image_6325748.png'
+            ],
+            [
+                'https://png.pngtree.com/png-clipart/20220110/original/pngtree-hand-painted-splash-milk-illustration-png-image_7057229.png',
+                'https://png.pngtree.com/png-clipart/20220110/original/pngtree-hand-painted-splash-milk-illustration-png-image_7057229.png',
+                'https://png.pngtree.com/png-clipart/20220110/original/pngtree-hand-painted-splash-milk-illustration-png-image_7057229.png',
+                'https://png.pngtree.com/png-clipart/20220110/original/pngtree-hand-painted-splash-milk-illustration-png-image_7057229.png'
+            ]
+        ];
+
+        // Select floating images from the DOM
+        const floatingImages = document.querySelectorAll('.floating-images img');
+
+        function rotateFloatingImages(newIndex) {
+            // Fade out the images
+            floatingImages.forEach((img) => {
+                img.style.transition = 'opacity 0.5s ease-in-out'; // Apply transition
+                img.style.opacity = '0'; // Start fading out
+            });
+
+            // Use setTimeout to change the source after the fade-out
+            setTimeout(() => {
+                // Change the source of floating images
+                floatingImages.forEach((img, index) => {
+                    img.src = floatingImagesSrc[newIndex][index]; // Update source
+                    img.style.opacity = '1'; // Fade back in
+                });
+            }, 500); // Match this delay with the fade-out duration
+        }
+        
+        function updateProduct(newIndex) {
+            // Rotate the product and product name out
+            product.style.transform = `rotateY(90deg)`;
+            productName.style.transform = `rotateY(90deg)`;
+            productName.classList.add('rotate-text');
+
+            setTimeout(() => {
+                // Update the product image and name
+                product.src = products[newIndex];
+                productName.textContent = productNames[newIndex];
+
+                // Rotate the floating images
+                rotateFloatingImages(newIndex);
+
+            // Update text color classes
+            productName.classList.remove('oatmeal', 'pistachio');
+                if (productNames[newIndex] === 'Oatmeal') {
+                    productName.style.color = '#8eb7c0'; // Set color for Oatmeal
+                    
+                } else if (productNames[newIndex] === 'Pistachio') {
+                    productName.style.color = '#495d39'; // Set color for Pistachio
+                    
+                }else if (productNames[newIndex] === 'ReducedFat') {
+                    productName.style.color = '#654068'; // Set color for ReducedFat
+                    
+                }else if (productNames[newIndex] === 'GrassFed') {
+                    productName.style.color = '#0f4122'; // Set color for GrassFed
+                    
+                }else if (productNames[newIndex] === 'WholeMilk') {
+                    productName.style.color = '#b91013'; // Set color for WholeMilk
+                    
+                } else {
+                    productName.style.color = '#be6236'; // Default color for Almond
+                    
+                }
+
+                // Rotate back the product and product name
+                product.style.transform = `rotateY(0deg)`;
+                productName.style.transform = `rotateY(0deg)`;
+                productName.classList.remove('rotate-text');
+            }, 500); // Ensure this matches the fade-out duration
+        }
+
+        prevButton.addEventListener('click', () => {
+            productIndex = (productIndex - 1 + products.length) % products.length;
+            updateProduct(productIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            productIndex = (productIndex + 1) % products.length;
+            updateProduct(productIndex);
+        });
+
+        // Initialize the first product
+        updateProduct(productIndex);
+</script>
+
+<!-- js for fontawesome  -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<!-- js for toggle  -->
+<script>
+    // Toggle the mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        var menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>
+
+
+<!-- product item container  -->
+
+<!-- products cards  -->
+<div class="container mx-auto px-4 py-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <!-- Almond Flavor Card -->
+    <div id="almond" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #be61368d;">
+        <div id="almond" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #be6236;">
+          <img src="https://i.shgcdn.com/654c33e6-7c24-4c1f-9bf8-b149ae6e6f11/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="ALMOND Milk" class="h-40 mb-4" id="almond-img">
+        </div>
+        <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">ALMOND</h2>
+        <p class="text-500 mb-4 text-white product-price" id="product-price">$3.99</p>
+        <div class="flex space-x-2">
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #be6236;" onclick="addToCart('Almond', 3.99, 'https://i.shgcdn.com/654c33e6-7c24-4c1f-9bf8-b149ae6e6f11/-/format/auto/-/preview/3000x3000/-/quality/lighter/')">ADD TO CART</button>
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #be6236;" onclick="redirectToCheckout('Almond', 3.99)">SHOP</button>
+        </div>
+      </div>
+
+    <!-- Oatmeal Flavor Card -->
+    <div id="oatmeal" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #8eb7c081;">
+        <div id="oatmeal" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #8eb7c0;">
+          <img src="https://i.shgcdn.com/d648fe87-50c6-474e-9dc6-83ad87237d1b/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="OATMEAL Milk" class="h-40 mb-4" id="oatmeal-img">
+        </div>
+        <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">OATMEAL</h2>
+        <p class="text-500 mb-4 text-white product-price" id="product-price">$4.49</p>
+        <div class="flex space-x-2">
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #8eb7c0;" onclick="addToCart('Oatmeal', 4.49, 'https://i.shgcdn.com/d648fe87-50c6-474e-9dc6-83ad87237d1b/-/format/auto/-/preview/3000x3000/-/quality/lighter/')">ADD TO CART</button>
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #8eb7c0;" onclick="redirectToCheckout('Oatmeal', 4.49)">SHOP</button>
+        </div>
+      </div>
+
+    <!-- Pistachio Flavor Card -->
+    <div id="pistachio" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #495d396e;">
+      <div id="pistachio" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #495d39;">
+        <img src="https://i.shgcdn.com/4506ee55-cd1d-4cff-a387-346e9fb3ad4e/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="PISTACHIO Milk" class="h-40 mb-4" id="pistachio-img">
+      </div>
+      <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">PISTACHIO</h2>
+      <p class="text-500 mb-4 text-white product-price" id="product-price">$5.29</p>
+      <div class="flex space-x-2">
+        <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #495d39;" onclick="addToCart('Pistachio', 5.29, 'https://i.shgcdn.com/4506ee55-cd1d-4cff-a387-346e9fb3ad4e/-/format/auto/-/preview/3000x3000/-/quality/lighter/')">ADD TO CART</button>
+        <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #495d39;" onclick="redirectToCheckout('Pistachio', 5.29)">SHOP</button>
+      </div>
+    </div>
+
+    <!-- Reduced Fat Milk Flavor Card -->
+    <div id="reduced-fat-milk" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #65406874;">
+        <div id="reduced-fat-milk" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #654068;">
+          <img src="https://alexandrefamilyfarm.com/cdn/shop/products/2_ReducedFatMilk_48ozrender_1_196x.png?v=1677526403" alt="Reduced Fat Milk" class="h-36 mb-4" id="Reduced-Fat-Milk-img">
+        </div>
+        <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">Reduced-Fat Milk</h2>
+        <p class="text-500 mb-4 text-white product-price" id="product-price">$3.59</p>
+        <div class="flex space-x-2">
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #654068;" onclick="addToCart('Reduced-Fat-Milk', 3.59, 'https://alexandrefamilyfarm.com/cdn/shop/products/2_ReducedFatMilk_48ozrender_1_196x.png?v=1677526403')">ADD TO CART</button>
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #654068;" onclick="redirectToCheckout('Reduced-Fat-Milk', 3.59)">SHOP</button>
+        </div>
+      </div>
+
+    <!-- Grass-fed Milk Flavor Card -->
+    <div id="grass-fed-milk" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #0f412274;">
+        <div id="grass-fed-milk" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #0f4122;">
+          <img src="https://alexandrefamilyfarm.com/cdn/shop/products/48oz_GrassFed_2000x1600_1f04bdad-cf9d-4458-bacb-fc52da3dfbbe_196x.png?v=1653515540" alt="Grass-fed Milk" class="h-36 mb-4" id="Grass-fed-Milk-img">
+        </div>
+        <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">Grass-fed Milk</h2>
+        <p class="text-500 mb-4 text-white product-price" id="product-price">$3.49</p>
+        <div class="flex space-x-2">
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #0f4122;" onclick="addToCart('Grass-fed-Milk', 3.49, 'https://alexandrefamilyfarm.com/cdn/shop/products/48oz_GrassFed_2000x1600_1f04bdad-cf9d-4458-bacb-fc52da3dfbbe_196x.png?v=1653515540')">ADD TO CART</button>
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #0f4122;" onclick="redirectToCheckout('Grass-fed-Milk', 3.49)">SHOP</button>
+        </div>
+      </div>
+
+    <!-- Whole Milk Flavor Card -->
+    <div id="whole-milk" class="bg-100 rounded-lg flex flex-col items-center p-4 shadow-lg" style="background-color: #7c292979;">
+        <div id="whole-milk" class="flex items-center justify-center w-full h-32 bg-300 rounded-lg mb-4" style="background-color: #b91013;">
+          <img src="https://alexandrefamilyfarm.com/cdn/shop/products/48oz_Whole_2000x1600_0f8e8ba7-e2a9-475c-8e51-d0c74c5c1cf0_196x.png?v=1653515587" alt="Whole Milk" class="h-36 mb-4" id="Whole-Milk-img">
+        </div>
+        <h2 class="text-800 font-semibold text-lg mb-2 text-white" id="product-name">Reduced-Fat Milk</h2>
+        <p class="text-500 mb-4 text-white product-price" id="product-price">$3.39</p>
+        <div class="flex space-x-2">
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #b91013;" onclick="addToCart('Whole-Milk', 3.39, 'https://alexandrefamilyfarm.com/cdn/shop/products/48oz_Whole_2000x1600_0f8e8ba7-e2a9-475c-8e51-d0c74c5c1cf0_196x.png?v=1653515587')">ADD TO CART</button>
+          <button class="bg-500 text-white px-2 py-2 rounded-lg" style="background-color: #b91013;" onclick="redirectToCheckout('Whole-Milk', 3.39)">SHOP</button>
+        </div>
+      </div>
+  </div>
+
+  <div id="message" class="fixed bottom-10 right-10 bg-green-500 text-white px-4 py-2 rounded-lg text-sm hidden">Your item has been added to the cart!</div>
+
+
+<!-- footer starts  -->
+<!-- Footer Section -->
+<footer class="py-12 px-6 text-white" style="background-color: #883225; font-family: 'Krub';">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+        
+        <!-- Logo and Contact Section -->
+        <div class="lg:w-1/4 mb-10 lg:mb-0">
+          <img src="https://cdn-icons-png.flaticon.com/512/1448/1448460.png" alt="WholeMoon Logo" class="mb-4 h-12" style="color: white;">
+          <h2 class="text-3xl font-bold">Get in touch.</h2>
+          <p class="mt-4 text-[#BCC6D4]">
+            We’re here if you ever have any questions, comments, or just want to chat. Drop us a line through the form below or shoot us an email. Our inbox is always open.
+          </p>
+  
+          <!-- Email Input -->
+          <div class="mt-6 relative">
+            <input
+              type="email"
+              placeholder="Email address"
+              class="bg-transparent border border-[#BCC6D4] text-white rounded-full px-4 py-2 w-full"
+            />
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+              →
+            </button>
+          </div>
+        </div>
+  
+        <!-- Navigation Links Section -->
+        <div class="lg:w-3/4 flex flex-col sm:flex-row justify-around space-y-8 sm:space-y-0">
+          
+          <!-- Content Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Content</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="flavor.html" class="hover:underline">Our Products</a></li>
+              <li><a href="about.html" class="hover:underline">About Us</a></li>
+              <li><a href="contact.html#faq" class="hover:underline">FAQs</a></li>
+            </ul>
+          </div>
+  
+          <!-- Social Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Social</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+              <li><a href="#" class="hover:underline">LinkedIn</a></li>
+              <li><a href="#" class="hover:underline">Facebook</a></li>
+            </ul>
+          </div>
+  
+          <!-- Contact Info -->
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="mailto:hello@wholemoon.com" class="hover:underline">example@email.com</a></li>
+              <li>Kolkata, IND</li>
+            </ul>
+  <!-- footer ends  -->
+
+  
+<!-- script for cart page  -->
+<script> 
+// Function to add item to the cart and update cart count
+function addToCart(name, price, imgUrl) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const itemIndex = cart.findIndex(item => item.name === name); // Check if the item already exists in the cart
+
+  if (itemIndex !== -1) {
+    cart[itemIndex].quantity += 1; // If item exists, increase the quantity
+  } else {
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1,
+      imageUrl: imgUrl // Store the image URL for the cart
+    });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Update cart icon count
+  updateCartCount();
+
+  // Show confirmation message
+  const message = document.getElementById('message');
+  message.classList.remove('hidden');
+  setTimeout(() => message.classList.add('hidden'), 3000); // Hide after 3 seconds
+}
+
+// Update cart count on the icon
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartCount = document.getElementById('cart-count');
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  
+  // Update the display of the cart count
+  if (totalItems > 0) {
+    cartCount.textContent = totalItems;
+    cartCount.classList.remove('hidden');
+  } else {
+    cartCount.classList.add('hidden');
+  }
+}
+
+// Initial call to update cart count when the page loads
+updateCartCount();
+
+// Function to redirect to cart
+function redirectToCart() {
+  window.location.href = "cart.html";
+}
+
+</script>
+
+<!-- js for checkout page  -->
+<script>
+  // Redirect to checkout and store product data in localStorage
+  function redirectToCheckout(name, price) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Check if the product already exists in the cart, and if so, increase the quantity
+    const existingItemIndex = cart.findIndex(item => item.name === name);
+    if (existingItemIndex >= 0) {
+      // Increase the quantity of the existing item
+      cart[existingItemIndex].quantity += 1;
+    } else {
+      // Add the new product to the cart
+      cart.push({
+        name: name,
+        price: price,
+        quantity: 1
+      });
+    }
+  
+    // Store the updated cart back in localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+  
+    // Redirect to checkout page
+    window.location.href = "checkout.html";
+  }
+  
+  </script>
+</body>
+
+</html>
