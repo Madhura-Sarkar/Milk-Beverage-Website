@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="overflow-x-hidden" style="background-color: #FFF0D1; font-family: 'Krub';">
+
+<!-- Navbar Section -->
+<nav class="py-4 px-4 sm:px-6 md:px-8 lg:px-12">
+    <div class="container mx-auto flex justify-between items-center">
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/512/423/423992.png" alt="logo" class="w-8 h-8 inline-block transform -rotate-45">
+        </div>
+
+        <ul class="hidden md:flex space-x-12 text-brown-900 font-semibold" style="font-family: 'Lemon';">
+            <li class="active" aria-current="page"><a href="#" class="nav-link" style="color: #be6236; font-weight: bold;">Home</a></li>
+            <li><a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavor</a></li>
+            <li><a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a></li>
+            <li><a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a></li>
+        </ul>
+
+        <div class="text-brown-900 text-2xl relative">
+            <a href="cart.html">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-count" class="absolute top-0 right-0 rounded-full bg-red-600 text-white text-xs px-2 py-1 hidden">0</span>
+            </a>    
+            <a href="#">
+                <i class="fa-solid fa-user" style="color: #000000; margin-left: 20px;"></i>
+            </a>    
+        </div>
+
+        <button class="block md:hidden text-brown-900" id="menu-toggle">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <ul id="mobile-menu" class="md:hidden hidden mt-4 space-y-2 text-center text-brown-900 font-semibold" style="font-family: 'Lemon';">
+        <li class="active" aria-current="page">
+            <a href="#" class="nav-link text-[#be6236] transition">Home</a>
+        </li>
+        <li>
+            <a href="flavor.html" class="nav-link hover:text-[#be6236] transition">Flavors</a>
+        </li>
+        <li>
+            <a href="about.html" class="nav-link hover:text-[#be6236] transition">About</a>
+        </li>
+        <li>
+            <a href="contact.html" class="nav-link hover:text-[#be6236] transition">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Container 1 -->
+<div class="flex justify-center items-center h-[90vh] relative p-5">
+    <div class="absolute top-[5%] left-[-18%] w-[450px] h-[450px] bg-[#883225] rounded-full z-[-1] hidden md:block"></div>
+    <div class="absolute top-[10%] left-[3%] w-[450px] h-[450px] bg-[#c7dce2] rounded-full z-[-1] hidden md:block"></div>
+    <img src="https://www.namasteindiatrip.org/wp-content/uploads/2022/07/Keventers-Milkshake.jpg" class="max-w-[35%] rounded-[40px] mt-[40px] mr-[80px] ml-[130px] hidden md:block" alt="Healthy Drinks">
+    
+    <div class="text-center md:text-left">
+        <h1 class="text-[80px] text-[#883225] font-medium" style="font-family: Lemon;">Healthy Drinks</h1>
+        <p class="text-[#883225] max-w-[800px] text-left" style="font-family: 'Krub'; font-weight: 700;">Our collection of milk-based beverages offers a variety of creamy classics and innovative flavors, providing wholesome goodness and refreshment for a nourishing start to the day or a delicious treat.</p>
+        <div class="text-left mt-5">
+            <button class="bg-white text-[#5d7659] rounded-full px-6 py-2 text-lg font-medium shadow-lg transition hover:bg-[#5d7659] hover:text-white" style="font-size: 20px; font-family: 'Leckerli One'; font-weight: 500; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);">
+                <a href="flavor.html">Order Now</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- container 2  -->
+
+<div class="container mx-auto text-center mt-10 about">
+    <h1 class="text-6xl font-bold" style="color: #883225; font-family: 'Lemon';">About Us</h1>
+    <h3 class="text-3xl font-bold mt-2" style="color: #5d7659; font-family: 'Lemon';">Who we are</h3>
+    <div class="w-40 h-1 mx-auto rounded-full mt-2" style="width: 150px; height: 3px; background-color: #883225; margin: 10px auto; border-radius: 50px;"></div>
+    <p class="max-w-2xl mx-auto mt-4 text-lg font-semibold" style="color: #883225; max-width: 1000px; margin: 10px auto; font-size: 18px; font-weight: 600;">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+        <!-- Card 1 -->
+        <div class="relative overflow-hidden bg-white rounded-lg shadow-lg p-4 backdrop-blur-md bg-opacity-15">
+            <div class="absolute inset-0 rounded-lg border border-transparent border-gradient-to-r from-[#69b4d9] to-transparent z-0"></div>
+            <div class="relative z-10 text-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/10492/10492708.png" alt="Natural Form Icon" class="w-36 h-36 mx-auto mb-3 drop-shadow-md bg-white p-5 rounded-lg" style="width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* Subtle shadow for icon */ background: #fff; padding: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 30px;">
+                <h5 class="text-lg" style="color: #883225; font-weight: 400; font-family: 'Lemon';">Natural Form</h5>
+                <p class="text-base" style="color: #883225; font-family: 'Krub';">If you are looking for party orders and events we can do it.</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="relative overflow-hidden bg-white rounded-lg shadow-lg p-4 backdrop-blur-md bg-opacity-15">
+            <div class="absolute inset-0 rounded-lg border border-transparent border-gradient-to-r from-[#69b4d9] to-transparent z-0"></div>
+            <div class="relative z-10 text-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/1951/1951456.png" alt="Ingredients Icon" class="w-36 h-36 mx-auto mb-3 drop-shadow-md bg-white p-5 rounded-lg" style="width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* Subtle shadow for icon */ background: #fff; padding: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 30px;">
+                <h5 class="text-lg" style="color: #883225; font-weight: 400; font-family: 'Lemon';">Ingredients</h5>
+                <p class="text-base" style="color: #883225; font-family: 'Krub';">Made from fresh ingredients and sealed with a seal pack.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="relative overflow-hidden bg-white rounded-lg shadow-lg p-4 backdrop-blur-md bg-opacity-15">
+            <div class="absolute inset-0 rounded-lg border border-transparent border-gradient-to-r from-[#69b4d9] to-transparent z-0"></div>
+            <div class="relative z-10 text-center">
+                <img src="https://cdn2.iconfinder.com/data/icons/farming-filled-outline/340/bucket_milk_drink_farm_fresh_healthy_cow-512.png" alt="Colors Icon" class="w-36 h-36 mx-auto mb-3 drop-shadow-md bg-white p-5 rounded-lg" style="width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* Subtle shadow for icon */ background: #fff; padding: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 30px;">
+                <h5 class="text-lg" style="color: #883225; font-weight: 400; font-family: 'Lemon';">Colors</h5>
+                <p class="text-base" style="color: #883225; font-family: 'Krub';">No extra color is added for the taste and attractive colors.</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="relative overflow-hidden bg-white rounded-lg shadow-lg p-4 backdrop-blur-md bg-opacity-15">
+            <div class="absolute inset-0 rounded-lg border border-transparent border-gradient-to-r from-[#69b4d9] to-transparent z-0"></div>
+            <div class="relative z-10 text-center">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/024/029/723/small_2x/hand-shake-clipart-transparent-background-free-png.png" alt="Safe Healthy Icon" class="w-36 h-36 mx-auto mb-3 drop-shadow-md bg-white p-5 rounded-lg" style="width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* Subtle shadow for icon */ background: #fff; padding: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 30px;">
+                <h5 class="text-lg" style="color: #883225; font-weight: 400; font-family: 'Lemon';">Safe Healthy</h5>
+                <p class="text-base" style="color: #883225; font-family: 'Krub';">We specially look into the healthy ingredients for our customer.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-10">
+        <button class="bg-white text-[#5d7659] rounded-full px-6 py-2 text-lg font-medium shadow-lg transition hover:bg-[#5d7659] hover:text-white" style="font-size: 20px; font-family: 'Leckerli One'; font-weight: 500; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);">
+            <a href="about.html">Read More</a>
+        </button>
+    </div>
+</div>
+
+<!-- conatiner 3  -->
+<!-- Main Container -->
+<section class="py-12 px-6 mt-20">
+    <div class="text-center mb-8">
+        <h2 class="text-5xl font-semibold" style="color: #883225; font-family: 'Lemon';">Our Products</h2>
+        <p class="max-w-2xl mx-auto mt-4 text-lg font-semibold" style="color: #883225; font-family: 'Krub'; font-weight: 700; max-width: 1000px;">Our Dairy Drink Products section offers a variety of high-quality dairy beverages, including milk, creamy drinks, and indulgent smoothies, designed to provide essential nutrients and satisfy taste buds.</p>
+    </div>
+
+    <!-- Product Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-screen-lg">
+        
+        <!-- Product Card 1 -->
+        <div class="rounded-lg shadow-md p-6 relative" style="background-color: #C7DCE2;">
+            <div class="absolute top-4 left-4">
+                <button class="relative rounded-full z-10 w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full bg-white bg-opacity-30 backdrop-blur-md border border-light-100 z-0"></div>
+                    <i class="fas fa-heart text-gray-400 hover:text-gray-600 relative"></i>
+                </button>
+            </div>                
+     
+            <img src="https://i.pinimg.com/originals/5b/22/fc/5b22fca66af81471601af0df208b5e5a.png" alt="Product 1" class="w-full rounded-lg mb-4">
+            <h3 class="text-[#883225] text-xl font-bold" style="color: #883225; font-family: 'Lemon'; font-weight: 300;">MILKY</h3>
+            <p class="text-[#883225] mb-2" style="color: #883225; font-family: 'Krub';">TESCO Milkyway Milkshakes</p>
+            <p class="text-green-700 font-bold text-lg" style="font-family: 'Lemon';">$8.00</p>
+            <div class="absolute bottom-4 right-4">
+                <button class="text-[#883225]" style="background-color: #883225;padding: 10px 15px; border-radius: 50px; color: white;">
+                    <i class="fas fa-arrow-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="rounded-lg shadow-md p-6 relative" style="background-color: #C7DCE2;">
+            <div class="absolute top-4 left-4">
+                <button class="relative rounded-full z-10 w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full bg-white bg-opacity-30 backdrop-blur-md border border-light-100 z-0"></div>
+                    <i class="fas fa-heart text-gray-400 hover:text-gray-600 relative"></i>
+                </button>
+            </div>
+
+            <img src="https://perranbrittonphotos.files.wordpress.com/2018/02/milkshake-branding-packaging-design-bottles.jpg" alt="Product 2" class="w-full rounded-lg mb-4">
+            <h3 class="text-xl font-bold" style="color: #883225; font-family: 'Lemon'; font-weight: 300;">TWINKY FARMER</h3>
+            <p class="mb-2" style="color: #883225; font-family: 'Krub';">Lactose-free Skimmed Milk</p>
+            <p class="text-green-700 font-bold text-lg" style="font-family: 'Lemon';">$9.00</p>
+            <div class="absolute bottom-4 right-4">
+                <button class="text-[#883225]" style="background-color: #883225;padding: 10px 15px; border-radius: 50px; color: white;">
+                    <i class="fas fa-arrow-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="rounded-lg shadow-md p-6 relative" style="background-color: #C7DCE2;">
+            <div class="absolute top-4 left-4">
+                <button class="relative rounded-full z-10 w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full bg-white bg-opacity-30 backdrop-blur-md border border-light-100 z-0"></div>
+                    <i class="fas fa-heart text-gray-400 hover:text-gray-600 relative"></i>
+                </button>
+            </div>
+
+            <img src="https://i.pinimg.com/736x/e0/9f/b4/e09fb47c0c43c32e547d7388fc589787.jpg" alt="Product 3" class="w-full rounded-lg mb-4">
+            <h3 class="text-[#883225] text-xl font-bold" style="color: #883225; font-family: 'Lemon'; font-weight: 300;">WHOLE MOON</h3>
+            <p class="text-[#883225] mb-2" style="color: #883225; font-family: 'Krub';">WHOLEMOON Protein Drink</p>
+            <p class="text-green-700 font-bold text-lg" style="font-family: 'Lemon';">$10.00</p>
+            <div class="absolute bottom-4 right-4">
+                <button class="text-[#883225]" style="background-color: #883225;padding: 10px 15px; border-radius: 50px; color: white;">
+                    <i class="fas fa-arrow-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Order Button -->
+    <div class="text-center mt-10">
+        <button class="bg-white text-[#5d7659] rounded-full px-6 py-2 text-lg font-medium shadow-lg transition hover:bg-[#5d7659] hover:text-white" style="font-size: 20px; font-family: 'Leckerli One'; font-weight: 500; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);">
+            <a href="flavor.html">Explore Now</a>
+        </button>
+    </div>
+</section>
+
+<!-- review section  -->
+<!-- Testimonial Section -->
+<section class="py-12 px-6">
+    <div class="text-center">
+        <!-- Title -->
+        <div class="milk bottles png">
+            <img src="product.svg" alt="Product Bottles" class="h-32 sm:h-36 md:h-40 mx-auto opacity-80">
+        </div>
+    </div>
+    
+
+    <!-- Flex container for testimonials and navigation arrows -->
+    <div class="flex items-center justify-center space-x-4">
+        <!-- Navigation Arrows -->
+        <button id="prev-btn" class="text-[#5d4e4e] hover:text-[#883225] sm:text-5xl md:text-6xl" style="margin: 0 60px 0 60px" aria-label="Previous testimonial">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <!-- Testimonial Card Container -->
+        <div id="testimonial-container" class="relative mx-auto max-w-full sm:max-w-lg lg:max-w-2xl rounded-lg shadow-lg p-6 text-center border opacity-90" style="background-color: #F6F5EC; border: 2px solid #883225; max-width: 850px;">
+            <!-- Overlay Images and Hashtag -->
+            <div class="absolute top-0 right-0 transform md:right-4 md:top-4 flex opacity-70" style="font-family: 'Baloo 2'; color: #291919;">
+                <!-- Hide on small screens, show on medium and up -->
+                <h3 class="text-4xl sm:text-5xl md:text-7xl font-bold hidden sm:block">#</h3>
+                <h3 class="text-4xl sm:text-5xl md:text-7xl font-bold hidden sm:block" style="color: #F6F5EC; -webkit-text-stroke: 3px #291919; hidden-sm:block;">say</h3>
+            </div>     
+
+            <!-- Testimonials -->
+            <div class="testimonial">
+                <h2 class="text-5xl font-bold mt-14 mb-8" style="color: #883225;">What They Say</h2>
+                <p class="text-lg mb-4" style="font-family: 'Krub'; color: #883225; font-weight: 500;">"I'm absolutely thrilled with the Whole Moon beverages! The flavor is rich and creamy, and it’s clear that quality ingredients are used. Every sip is a delight! I love knowing I’m enjoying a product that not only tastes great but is also made with care. Highly recommend!"</p>
+                <div class="mt-8 mb-4 relative flex flex-col items-center">
+                    <img src="https://i.pinimg.com/564x/4c/ca/6d/4cca6de9251400c9b1926d3efeeb2a7b.jpg" alt="Client Image" class="w-14 h-14 rounded-full border-2 border-[#e5dacd] mb-2 absolute top-[-30px] object-cover">
+                    <div class="text-center mt-14">
+                        <p class="font-bold" style="color: #883225;">Clara Arnolds</p>
+                        <p class="text-sm text-gray-500" style="color: #5d7659;">client from our shop</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden testimonial">
+                <h2 class="text-5xl font-bold mt-14 mb-8" style="color: #883225;">What They Say</h2>
+                <p class="text-lg mb-4" style="font-family: 'Krub'; color: #883225; font-weight: 500;">"I'm so glad I tried these beverages! The flavor is rich, smooth, and perfectly balanced. I recommended them to my family, and now they're a household favorite. Whether at breakfast or as a refreshing treat, they never disappoint!"</p>
+                <div class="mt-8 mb-4 relative flex flex-col items-center">
+                    <img src="https://i.pinimg.com/564x/aa/f4/45/aaf44580d5c933fc862f8afc51b30e33.jpg" alt="Client Image" class="w-14 h-14 rounded-full border-2 border-[#e5dacd] mb-2 absolute top-[-30px] object-cover">
+                    <div class="text-center mt-14">
+                        <p class="font-bold" style="color: #883225;">Crist Doe</p>
+                        <p class="text-sm text-gray-500" style="color: #5d7659;">happy customer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden testimonial">
+                <h2 class="text-5xl font-bold mt-14 mb-8" style="color: #883225;">What They Say</h2>
+                <p class="text-lg mb-4" style="font-family: 'Krub'; color: #883225; font-weight: 500;">"My kids absolutely love these drinks! They’re picky when it comes to flavors, but these Whole Moon beverages passed the test with flying colors. The taste is smooth. It's the perfect go-to drink for after school or a snack. Highly recommend for families with young ones!"</p>
+                <div class="mt-8 mb-4 relative flex flex-col items-center">
+                    <img src="https://i.pinimg.com/564x/3b/18/e1/3b18e1e08b6d1906b224e69c93856c9c.jpg" alt="Client Image" class="w-14 h-14 rounded-full border-2 border-[#e5dacd] mb-2 absolute top-[-30px] object-cover">
+                    <div class="text-center mt-14">
+                        <p class="font-bold" style="color: #883225;">Emily Smith</p>
+                        <p class="text-sm text-gray-500" style="color: #5d7659;">loyal customer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button id="next-btn" class="text-[#5d4e4e] hover:text-[#883225] sm:text-5xl md:text-6xl" style="margin: 0 60px 0 60px" aria-label="Next testimonial">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</section>
+
+<script>
+    const testimonials = document.querySelectorAll('.testimonial');
+    let currentIndex = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+            testimonial.classList.toggle('hidden', i !== index);
+        });
+    }
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        showTestimonial(currentIndex);
+    });
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(currentIndex);
+    });
+
+    // Initialize by showing the first testimonial
+    showTestimonial(currentIndex);
+</script>
+<!-- review section end  -->
+
+<!-- footer starts  -->
+<!-- Footer Section -->
+<footer class="py-12 px-6 text-white" style="background-color: #883225; font-family: 'Krub';">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+        
+        <!-- Logo and Contact Section -->
+        <div class="lg:w-1/4 mb-10 lg:mb-0">
+          <img src="https://cdn-icons-png.flaticon.com/512/1448/1448460.png" alt="WholeMoon Logo" class="mb-4 h-12" style="color: white;">
+          <h2 class="text-3xl font-bold">Get in touch.</h2>
+          <p class="mt-4 text-[#BCC6D4]">
+            We’re here if you ever have any questions, comments, or just want to chat. Drop us a line through the form below or shoot us an email. Our inbox is always open.
+          </p>
+  
+          <!-- Email Input -->
+          <div class="mt-6 relative">
+            <input
+              type="email"
+              placeholder="Email address"
+              class="bg-transparent border border-[#BCC6D4] text-white rounded-full px-4 py-2 w-full"
+            />
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+              →
+            </button>
+          </div>
+        </div>
+  
+        <!-- Navigation Links Section -->
+        <div class="lg:w-3/4 flex flex-col sm:flex-row justify-around space-y-8 sm:space-y-0">
+          
+          <!-- Content Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Content</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="flavor.html" class="hover:underline">Our Products</a></li>
+              <li><a href="about.html" class="hover:underline">About Us</a></li>
+              <li><a href="contact.html#faq" class="hover:underline">FAQs</a></li>
+            </ul>
+          </div>
+  
+          <!-- Social Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Social</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+              <li><a href="#" class="hover:underline">LinkedIn</a></li>
+              <li><a href="#" class="hover:underline">Facebook</a></li>
+            </ul>
+          </div>
+  
+          <!-- Contact Info -->
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-[#BCC6D4]">
+              <li><a href="mailto:hello@wholemoon.com" class="hover:underline">example@email.com</a></li>
+              <li>Kolkata, IND</li>
+            </ul>
+<!-- footer ends  -->
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script>
+    // Toggle the mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        var menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>
+
+<!-- script for cart page  -->
+<script> 
+    // Function to add item to the cart and update cart count
+    function addToCart(name, price, imgUrl) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const itemIndex = cart.findIndex(item => item.name === name); // Check if the item already exists in the cart
+    
+      if (itemIndex !== -1) {
+        cart[itemIndex].quantity += 1; // If item exists, increase the quantity
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1,
+          imageUrl: imgUrl // Store the image URL for the cart
+        });
+      }
+    
+      localStorage.setItem('cart', JSON.stringify(cart));
+    
+      // Update cart icon count
+      updateCartCount();
+    
+      // Show confirmation message
+      const message = document.getElementById('message');
+      message.classList.remove('hidden');
+      setTimeout(() => message.classList.add('hidden'), 3000); // Hide after 3 seconds
+    }
+    
+    // Update cart count on the icon
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = document.getElementById('cart-count');
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      
+      // Update the display of the cart count
+      if (totalItems > 0) {
+        cartCount.textContent = totalItems;
+        cartCount.classList.remove('hidden');
+      } else {
+        cartCount.classList.add('hidden');
+      }
+    }
+    
+    // Initial call to update cart count when the page loads
+    updateCartCount();
+    
+    // Function to redirect to cart
+    function redirectToCart() {
+      window.location.href = "cart.html";
+    }
+    
+    </script>
+    
+</body>
+</html>
